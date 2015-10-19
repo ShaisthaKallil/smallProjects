@@ -1,0 +1,151 @@
+
+/*******************************************/
+/* SHAISTHA KALLIL - OCT 10,2015           */
+/*******************************************/
+
+html{
+    box-sizing: border-box;
+}*,*:before, *:after{
+    box-sizing:inherit;
+	}
+	
+body{
+	margin:0;
+	padding:0;
+	font-family: Tahoma, Geneva, sans-serif;
+	background-color:#CFAD67;
+}
+
+h1{
+	margin-left:430px;
+	color:maroon;
+}
+
+#instruction{
+	height:130px;
+	width:300px;
+	background-color:maroon;
+	color:white;
+	border:1px solid black;
+	border-radius:10px;
+	text-align:center;
+	position:relative;
+	top:-475px;
+	left:50px;
+}
+#container{
+	height:550px;
+	width:550px;
+	background-color:#ccc; 
+	margin:30px auto;
+	opacity:0.8;
+	border:1px solid green;
+	border-radius:10px;
+	
+} 
+
+table{
+	border:1px solid brown;
+}
+
+td{
+	height:107px;
+	width:107px;
+	border:1px solid red;
+	border-spacing:none;
+	display:none;
+	cursor:pointer;
+}
+
+#box{ 
+ 	height:150px;
+	width:150px; 
+	background-color:rgba(193,242,17,0.9); 
+    display:none;
+	position:relative;
+	cursor:pointer;
+}
+
+#controlBox{
+	height:200px;
+	width:210px;
+	border:1px solid black;
+	border-radius:10px;
+	background:linear-gradient(#bbb,#333);
+	position:fixed;
+	top:30%;
+	right:10%;
+	
+}
+
+#gameOption{
+	width:350px;
+	height:120px;
+	display:none;
+	border:1px solid #333;
+	border-radius:10px;
+	background-color:#000;
+	text-align:center;
+	color:#fff;
+	opacity:0.8;
+	filter:alpha(opacity = "0.6");
+	position:relative;
+	top:-500px;
+	left:500px;
+}
+
+#begin,#end,#reaction,#avgReaction,#yes,#no{
+	border-radius:5px;
+	color:white;
+	font-weight:bold;
+    text-align:center;
+}
+
+#begin,#end,#yes,#no{
+	width:70px;
+	margin-left:65px;
+	padding:5px;
+	border-radius:1px solid green;
+	background:linear-gradient(lime,green);
+	cursor:pointer;
+}
+
+#end,#no{
+	background:linear-gradient(pink,red);
+	display:none;
+}
+#yes{
+	display:block;
+	position:relative;
+	left:10px;
+}
+#no{
+	display:block;
+	margin-left:200px;
+	position:relative;
+	top:-32px;
+	
+	
+}
+#reaction,#avgReaction{
+	/* background:linear-gradient(lightblue,navy); */
+	background:linear-gradient(#333,#fff);
+	border:1px solid silver;
+	font-size:16px;
+	color:white;
+	
+}
+
+span{
+	position:relative;
+	top:55px;
+	color:#333;
+	font-size:20px;
+	font-weight:bold;
+	border:1px solid gray;
+	border-radius:5px;
+	background:linear-gradient(rgba(160,170,80,0.8),rgba(240,250,160,0.8));
+	margin-left:10px;
+	padding:5px; 
+}
+	
