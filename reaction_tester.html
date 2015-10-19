@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <title>Reaction Tester Game</title>
+	
+	<meta charset="utf-8">
+	<meta http-equiv="Content-type" content="text/html"; charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	
+	<link rel = "stylesheet" type = "text/css" href = "css/style_reaction.css" />
+
+</head>
+
+<body>
+    <h1> Start Up Your Reaction Tester </h1>
+	
+    <div id = "container">
+    <div id = "box"></div> 
+	</div>
+	
+	<div id = "instruction">
+	<h2>Instruction:</h2>
+	<p> Click on the Shapes as fast as you can!! </p>
+	</div>
+	
+	<div id = "controlBox">
+	   <p id = "begin">START</p>
+	   <p id = "end">STOP</p>
+	   <p id = "reaction"></p>
+	   <p id = "avgReaction"></p>
+	</div>
+	
+	<div id = "gameOption">
+	   <p id = "option">Would You like to test you skill again?</p>
+	   <button id = "yes" value = "false">Yes</button>
+	   <button id = "no" value = "false"> No </button>
+	   
+	</div>
+	  
+	  <script type= "text/javascript">
+	  
+	    var createdTime; 
+		var clickedTime;
+		var clickCounter =0;
+		var reaction = new Array();
+		
+		function getRandomColor(){
+		     var color = "#";
+			 var value = '0123456789ABCDEF'.split('');
+			 for(var i = 0; i<6; i++){
+			    color += value[Math.floor(Math.random()* 16)];
+			 }
+			 
+			 return color;
+		
+		}
+		
+		function getRandomShape(){
+		      var shape;
+			  var shapeVal = Math.floor(Math.random()*71);
+			  
+			  shape = shapeVal+"%";
+			  return shape;
+		}
+		
+		function getPosition (){
+		     var position;
+			 var posVal = Math.floor(Math.random()*25);
+		
+		     position = posVal+"px";
+			 return position;
+		}
+		
+
+	  	function appear(){
+			
+			var timer = Math.floor((Math.random()*5000));
+
+			setTimeout(
+			  function(){
+
+				document.getElementById("box").style.backgroundColor = getRandomColor();
+				
+				document.getElementById("box").style.borderRadius = getRandomShape();
+				
+				var top = Math.random();
+				var left = Math.random();
+				
+				top = top * 300;
+				left = left * 400;
+				
+			    document.getElementById("box").style.top = top + "px";
+				
+				document.getElementById("box").style.left= left + "px";
+				
+				
+				
+				document.getElementById("box").style.display = "block";
+				
+				createdTime = Date.now();
+		   
+			  },timer);
+		
+		}
+		
+
+		
+		function reactionTime(){
+		
+		    var reactionTime;
+			
+			reactionTime = (clickedTime - createdTime)/1000;
+			
+			return reactionTime;
+		
+		}
+		
+		function averageReactionTime() {
+		
+		    var avgReactionTime = 0;
+			var totalReactionTime = 0;
+			
+			<!-- document.getElementById("box").style.display = "none"; -->
+			
+			if(reaction.length == 1){
+			   avgReactionTime = reaction[0];
+			   return avgReactionTime ;
+			}else {
+			
+			   for(var x = 0; x < clickCounter; x++){
+			   totalReactionTime += reaction[x];
+			   }
+		
+			   avgReactionTime = totalReactionTime/clickCounter; 
+		
+			   
+			   return avgReactionTime;
+			}
+		}
+		
+		document.getElementById("begin").onclick = function (){
+		    this.style.display = "none";
+			document.getElementById("end").style.display = "block";
+		    appear();
+		}
+	
+		
+		document.getElementById("end").onclick = function (){
+			
+			document.getElementById("box").style.display = "none";
+			this.style.display = "none";
+			
+		    var yourAvg = averageReactionTime();
+			
+			alert(yourAvg);
+			
+			document.getElementById("reaction").style.display = "none";
+			
+			document.getElementById("avgReaction").innerHTML ="Your Avg Reaction Time :  <span>"+yourAvg+" Seconds</span>";
+			
+			reaction.splice(0,reaction.length);
+			
+			clickCounter = 0;
+			
+			optionGame();
+			
+		}
+		
+		<!-- document.getElementById("box").style.display = "none"; -->
+		 
+	    document.getElementById("box").onclick = function () {
+		  
+		  clickedTime = Date.now();
+		  
+		  document.getElementById("box").style.display = "none";
+		  
+		  this.style.display = "none";
+		  
+		  clickCounter++;
+		  
+		  var yourReaction = reactionTime();
+          
+		  reaction.push(yourReaction);
+		  alert(reaction);
+		  
+		  document.getElementById("reaction").innerHTML ="Your Reaction Time :  <span>"+yourReaction+" Seconds</span>";
+		  
+		  appear();
+		
+		}
+		
+		function optionGame (){
+		    
+			document.getElementById("gameOption").style.display = "block";
+			<!-- document.getElementById("box").style.display = "none"; -->
+			
+			document.getElementById("yes").onclick = function (){
+				this.value = "true"; 
+				document.getElementById("gameOption").style.display = "none";
+				document.getElementById("begin").style.display = "block";
+			}
+		
+			document.getElementById("no").onclick = function (){
+				this.value = "true";
+			}
+			
+		}
+		
+		
+	  
+	  </script>
+   
+   
+   
+
+</body>
+
+</html>
